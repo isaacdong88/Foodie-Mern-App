@@ -4,7 +4,11 @@ const app = express();
 const PORT = 4000;
 
 const userRoute = require("./routes/User");
+const reviewsRoute = require("./routes/Reviews");
+const businessRoute = require("./routes/Business");
 app.use("/user", userRoute);
+app.use("/reviews", reviewsRoute);
+app.use("/business", businessRoute);
 
 //Middleware
 app.use(express.urlencoded({ extended: false }));
