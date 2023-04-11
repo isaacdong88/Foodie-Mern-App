@@ -1,0 +1,28 @@
+{
+  "name": "foodie-mern-app",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/isaacdong88/Foodie-Mern-App.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/isaacdong88/Foodie-Mern-App/issues"
+  },
+  "homepage": "https://github.com/isaacdong88/Foodie-Mern-App#readme",
+  "dependencies": {
+    "concurrently": "^8.0.1",
+    "cors": "^2.8.5",
+    "dotenv": "^16.0.3",
+    "express": "^4.18.2",
+    "method-override": "^3.0.0",
+    "mongoose": "^6.10.5"
+  }
+}
