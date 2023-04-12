@@ -9,10 +9,10 @@ const fetchReviews = async (req, res) => {
   }
 };
 
-//Show reviews, route Post /reviews
-const postReviews = async (req, res) => {
+//Create reviews, route Post /reviews
+const createReviews = async (req, res) => {
   try {
-    res.status(200).json({ message: "Show reviews" });
+    res.status(200).json({ message: "Create reviews" });
   } catch (error) {
     res.status(400).json({ message: "Can't find reviews" });
   }
@@ -37,7 +37,7 @@ const deleteReviews = async (req, res) => {
 };
 module.exports = {
   fetchReviews,
-  postReviews,
+  createReviews,
   editReviews,
   deleteReviews,
 };

@@ -7,7 +7,7 @@ const userRoute = require("./routes/User");
 const reviewsRoute = require("./routes/Reviews");
 const businessRoute = require("./routes/Business");
 
-// app.use("/user", userRoute);
+app.use("/user", userRoute);
 app.use("/reviews", reviewsRoute);
 // app.use("/business", businessRoute);
 

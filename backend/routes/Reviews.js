@@ -2,14 +2,14 @@ const express = require("express");
 const router = express.Router();
 const {
   fetchReviews,
-  postReviews,
+  createReviews,
   editReviews,
   deleteReviews,
 } = require("../controllers/ReviewsController");
 
 // router.get("/", controller.get);
 router.get("/", fetchReviews);
-router.post("/", postReviews);
+router.post("/", createReviews);
 router.put("/:id", editReviews);
 router.delete("/:id", deleteReviews);
 
