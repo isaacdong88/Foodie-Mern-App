@@ -3,7 +3,8 @@ const Review = require("../models/reviews");
 //Get reviews, route GET /reviews
 const fetchReviews = async (req, res) => {
   try {
-    res.status(200).json({ message: "Get reviews" });
+    const reviews = await Review.find();
+    res.status(200).json(reviews);
   } catch (error) {
     res.status(400).json({ message: "Can't find reviews" });
   }
@@ -21,7 +22,7 @@ const createReviews = async (req, res) => {
 //Edit reviews, route Put /reviews/:id
 const editReviews = async (req, res) => {
   try {
-    res.status(200).json({ message: "Get reviews" });
+    res.status(200).json({ message: "Edit reviews" });
   } catch (error) {
     res.status(400).json({ message: "Can't find reviews" });
   }
@@ -30,7 +31,7 @@ const editReviews = async (req, res) => {
 //Delete reviews, route Delete /reviews/:id
 const deleteReviews = async (req, res) => {
   try {
-    res.status(200).json({ message: "Get reviews" });
+    res.status(200).json({ message: `Delete reviews ${req.params.id}` });
   } catch (error) {
     res.status(400).json({ message: "Can't find reviews" });
   }

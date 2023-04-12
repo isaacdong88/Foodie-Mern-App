@@ -12,7 +12,7 @@ const reviewsSchema = new mongoose.Schema(
       ref: "Business",
       required: true,
     },
-    body: {
+    review: {
       type: String,
       required: true,
     },

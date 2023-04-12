@@ -1,4 +1,4 @@
-require("dotenv").config();
+require("dotenv").config({ path: ".env" });
 const express = require("express");
 const cors = require("cors");
 const app = express();
@@ -7,6 +7,7 @@ const mongoose = require("mongoose");
 const methodOverride = require("method-override");
 
 //Middleware
+app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(methodOverride("_method"));
 app.use((req, res, next) => {

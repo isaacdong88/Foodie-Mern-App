@@ -1,3 +1,4 @@
+const Business = require("../models/business");
 //Get business, route GET /business
 const fetchBusiness = async (req, res) => {
   try {

@@ -1,3 +1,5 @@
+const User = require("../models/customer");
+
 //Get user, route Get /user
 const fetchUser = async (req, res) => {
   try {
