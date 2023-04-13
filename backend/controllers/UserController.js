@@ -1,4 +1,6 @@
 const User = require("../models/customer");
+const jwt = require("jsonwebtoken");
+const bcrypt = require("bcryptjs");
 
 //Get user, route Get /user
 const fetchUser = async (req, res) => {
@@ -13,14 +15,22 @@ const fetchUser = async (req, res) => {
 //Create user, route Post /user
 const createUser = async (req, res) => {
   try {
-    const createUser = await User.create({
-      username: req.body.username,
-      password: req.body.password,
-      email: req.body.email,
-    });
-    res.status(200).json(createUser);
+    const { username, password, email } = req.body;
+    if (!username || !password || !email) {
+      res.status(400).json({ message: "Please fill in all fields" });
+    } else {
+      //hass password
+      const salt = await bcrypt.genSalt(10);
+      const hassedPassword = await bcrypt.hash(password, salt);
+      const createUser = await User.create({
+        username: username,
+        password: hassedPassword,
+        email: email,
+      });
+      res.status(201).json(createUser);
+    }
   } catch (error) {
-    res.status(400).json({ message: "Invalid User" });
+    res.status(400).json({ message: "User already exists" });
   }
 };
 
