@@ -21,10 +21,12 @@
   },
   "homepage": "https://github.com/isaacdong88/Foodie-Mern-App#readme",
   "dependencies": {
+    "bcryptjs": "^2.4.3",
     "concurrently": "^8.0.1",
     "cors": "^2.8.5",
     "dotenv": "^16.0.3",
     "express": "^4.18.2",
+    "jsonwebtoken": "^9.0.0",
     "method-override": "^3.0.0",
     "mongoose": "^6.10.5"
   }
