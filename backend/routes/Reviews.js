@@ -9,7 +9,7 @@ const {
 
 // router.get("/", controller.get);
 router.get("/", fetchReviews);
-router.post("/", createReviews);
+router.post("/:id", createReviews);
 router.put("/:id", editReviews);
 router.delete("/:id", deleteReviews);
 

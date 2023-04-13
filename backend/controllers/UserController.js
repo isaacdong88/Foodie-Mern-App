@@ -1,14 +1,20 @@
 const User = require("../models/customer");
+const Reviews = require("../models/reviews");
 const jwt = require("jsonwebtoken");
 const bcrypt = require("bcryptjs");
 
-//Get user, route Get /user
-const fetchUser = async (req, res) => {
+//Login user, route Post /user/login
+const loginUser = async (req, res) => {
   try {
-    const user = await User.find();
-    res.status(200).json(user);
+    const { email, password } = req.body;
+    const user = await User.findOne({ email });
+    if (user && (await bcrypt.compare(password, user.password))) {
+      res.status(200).json(user);
+    } else {
+      res.status(400).json({ message: "Invalid Credentials" });
+    }
   } catch (error) {
-    res.status(400).json({ message: "Invalid User" });
+    res.status(400).json({ message: "Missing login info" });
   }
 };
 
@@ -27,15 +33,30 @@ const createUser = async (req, res) => {
         password: hassedPassword,
         email: email,
       });
-      res.status(201).json(createUser);
+      res.status(201).json({
+        _id: createUser.id,
+        username: createUser.username,
+        email: createUser.email,
+        token: genToken(createUser._id),
+      });
     }
   } catch (error) {
     res.status(400).json({ message: "User already exists" });
   }
 };
 
-//Edit user, route Put /user/:id
-const editUser = async (req, res) => {
+//get user reviews, route Get /user/reviews/:id
+const userReviews = async (req, res) => {
+  try {
+    const userReviews = await Reviews.find({ user: req.params.id });
+    res.status(200).json(userReviews);
+  } catch (error) {
+    res.status(400).json({ message: "No reviews" });
+  }
+};
+
+//get user data, route Get /user/auth
+const getUser = async (req, res) => {
   try {
     const editUser = await User.findByIdAndUpdate(req.params.id, req.body);
     res.status(200).json(editUser);
@@ -54,9 +75,15 @@ const deleteUser = async (req, res) => {
   }
 };
 
+//Generate token
+const genToken = (id) => {
+  return jwt.sign({ id }, process.env.JWT_SECRET, { expiresIn: "30d" });
+};
+
 module.exports = {
-  fetchUser,
+  loginUser,
   createUser,
-  editUser,
+  getUser,
   deleteUser,
+  userReviews,
 };
