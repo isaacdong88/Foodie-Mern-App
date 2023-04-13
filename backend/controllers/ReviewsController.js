@@ -13,7 +13,10 @@ const fetchReviews = async (req, res) => {
 //Create reviews, route Post /reviews
 const createReviews = async (req, res) => {
   try {
-    res.status(200).json({ message: "Create reviews" });
+    const reviews = await Review.create({
+      review: req.body.review,
+    });
+    res.status(200).json(reviews);
   } catch (error) {
     res.status(400).json({ message: "Can't find reviews" });
   }
@@ -22,7 +25,8 @@ const createReviews = async (req, res) => {
 //Edit reviews, route Put /reviews/:id
 const editReviews = async (req, res) => {
   try {
-    res.status(200).json({ message: "Edit reviews" });
+    const editReview = await Review.findByIdAndUpdate(req.params.id, req.body);
+    res.status(200).json(editReview);
   } catch (error) {
     res.status(400).json({ message: "Can't find reviews" });
   }
@@ -31,7 +35,8 @@ const editReviews = async (req, res) => {
 //Delete reviews, route Delete /reviews/:id
 const deleteReviews = async (req, res) => {
   try {
-    res.status(200).json({ message: `Delete reviews ${req.params.id}` });
+    const deleteReviews = await Review.findByIdAndRemove(req.params.id);
+    res.status(200).json({ id: req.params.id });
   } catch (error) {
     res.status(400).json({ message: "Can't find reviews" });
   }
