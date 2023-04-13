@@ -15,6 +15,7 @@ const createReviews = async (req, res) => {
   try {
     const reviews = await Review.create({
       review: req.body.review,
+      rating: req.body.rating,
     });
     res.status(200).json(reviews);
   } catch (error) {
