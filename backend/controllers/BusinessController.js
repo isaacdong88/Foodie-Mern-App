@@ -1,13 +1,29 @@
 const Business = require("../models/business");
 const jwt = require("jsonwebtoken");
 const bcrypt = require("bcryptjs");
+
+//fetch all businesses, route GET /business/businesses
+const fetchBusinesses = async (req, res) => {
+  try {
+    const businesses = await Business.find();
+    res.status(200).json(businesses);
+  } catch (error) {
+    res.status(400).json({ message: "No business available" });
+  }
+};
+
 //Get business, route Post /business/login
 const loginBusiness = async (req, res) => {
   try {
     const { email, password } = req.body;
     const business = await Business.findOne({ email });
     if (business && (await bcrypt.compare(password, business.password))) {
-      res.status(200).json(business);
+      res.status(200).json({
+        _id: business.id,
+        username: business.username,
+        email: business.email,
+        token: genToken(business._id),
+      });
     } else {
       res.status(400).json({ message: "Invalid Credentials" });
     }
@@ -34,6 +50,7 @@ const createBusiness = async (req, res) => {
         _id: createBusiness.id,
         username: createBusiness.username,
         email: createBusiness.email,
+        token: genToken(createBusiness._id),
       });
     }
   } catch (error) {
@@ -64,7 +81,13 @@ const deleteBusiness = async (req, res) => {
   }
 };
 
+//Generate token
+const genToken = (id) => {
+  return jwt.sign({ id }, process.env.JWT_SECRET, { expiresIn: "30d" });
+};
+
 module.exports = {
+  fetchBusinesses,
   loginBusiness,
   createBusiness,
   editBusiness,
