@@ -5,7 +5,6 @@ const app = express();
 const PORT = 4000;
 const mongoose = require("mongoose");
 const methodOverride = require("method-override");
-const jwt = require("jsonwebtoken");
 
 //Middleware
 app.use(express.json());
@@ -21,8 +20,6 @@ app.use((req, res, next) => {
 });
 
 app.use(cors());
-
-//auth middleware
 
 mongoose.set("strictQuery", true);
 mongoose.connect(process.env.MONGO_URI, {
