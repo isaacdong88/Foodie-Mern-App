@@ -1,13 +1,18 @@
 const Business = require("../models/business");
 const jwt = require("jsonwebtoken");
 const bcrypt = require("bcryptjs");
-//Get business, route GET /business
-const fetchBusiness = async (req, res) => {
+//Get business, route Post /business/login
+const loginBusiness = async (req, res) => {
   try {
-    const business = await Business.find();
-    res.status(200).json(business);
+    const { email, password } = req.body;
+    const business = await Business.findOne({ email });
+    if (business && (await bcrypt.compare(password, business.password))) {
+      res.status(200).json(business);
+    } else {
+      res.status(400).json({ message: "Invalid Credentials" });
+    }
   } catch (error) {
-    res.status(400).json({ method: "Invalid Business" });
+    res.status(400).json({ message: "Missing login info" });
   }
 };
 
@@ -60,7 +65,7 @@ const deleteBusiness = async (req, res) => {
 };
 
 module.exports = {
-  fetchBusiness,
+  loginBusiness,
   createBusiness,
   editBusiness,
   deleteBusiness,
