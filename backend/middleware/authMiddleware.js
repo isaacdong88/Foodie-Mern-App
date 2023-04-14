@@ -10,7 +10,7 @@ const protect = async (req, res, next) => {
   ) {
     try {
       //get token
-      token = req.headers.authorization.split(" ");
+      token = req.headers.authorization.split(" ")[1];
 
       //verify token
       const decoded = jwt.verify(token, process.env.JWT_SECRET);
@@ -28,4 +28,4 @@ const protect = async (req, res, next) => {
   }
 };
 
-module.exports = protect;
+module.exports = { protect };

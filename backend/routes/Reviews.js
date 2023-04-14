@@ -7,9 +7,11 @@ const {
   deleteReviews,
 } = require("../controllers/ReviewsController");
 
+const { protect } = require("../middleware/authMiddleware");
+
 // router.get("/", controller.get);
 router.get("/", fetchReviews);
-router.post("/:id", createReviews);
+router.post("/", protect, createReviews);
 router.put("/:id", editReviews);
 router.delete("/:id", deleteReviews);
 

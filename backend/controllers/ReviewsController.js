@@ -10,13 +10,13 @@ const fetchReviews = async (req, res) => {
   }
 };
 
-//Create reviews, route Post /reviews/:id
+//Create reviews, route Post /reviews
 const createReviews = async (req, res) => {
   try {
     const reviews = await Review.create({
       review: req.body.review,
       rating: req.body.rating,
-      user: req.params.id,
+      user: req.user.id,
     });
     res.status(200).json(reviews);
   } catch (error) {
