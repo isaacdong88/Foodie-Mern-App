@@ -68,7 +68,7 @@ const getUser = async (req, res) => {
 //Delete user, route Delete /user/:id
 const deleteUser = async (req, res) => {
   try {
-    const deleteUser = await User.findByIdAndRemove(req.params.id);
+    // const deleteUser = await User.findByIdAndRemove(req.params.id);
     res.status(200).json({ id: req.params.id });
   } catch (error) {
     res.status(400).json({ message: "Invalid User" });

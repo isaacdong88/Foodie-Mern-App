@@ -1,4 +1,6 @@
 const Business = require("../models/business");
+const jwt = require("jsonwebtoken");
+const bcrypt = require("bcryptjs");
 //Get business, route GET /business
 const fetchBusiness = async (req, res) => {
   try {
@@ -12,14 +14,25 @@ const fetchBusiness = async (req, res) => {
 //Create business, route Post /business
 const createBusiness = async (req, res) => {
   try {
-    const createBusiness = await Business.create({
-      username: req.body.username,
-      password: req.body.password,
-      email: req.body.email,
-    });
-    res.status(200).json(createBusiness);
+    const { username, password, email } = req.body;
+    if (!username || !password || !email) {
+      res.status(400).json({ message: "Please fill in all fields" });
+    } else {
+      const salt = await bcrypt.genSalt(10);
+      const hassedPassword = await bcrypt.hash(password, salt);
+      const createBusiness = await Business.create({
+        username: req.body.username,
+        password: hassedPassword,
+        email: req.body.email,
+      });
+      res.status(200).json({
+        _id: createBusiness.id,
+        username: createBusiness.username,
+        email: createBusiness.email,
+      });
+    }
   } catch (error) {
-    res.status(400).json({ method: "Invalid Business" });
+    res.status(400).json({ method: "Business already exist" });
   }
 };
 
