@@ -1,5 +1,8 @@
 import React from 'react'
 import { useState, useEffect } from 'react'
+import {useSelector, useDispatch} from 'react-redux'
+import {useNavigate} from 'react-router-dom'
+import {register, reset} from '../features/auth/authSlice'
 
 function Register() {
     const [formData, setFormData] = useState({
@@ -11,6 +14,22 @@ function Register() {
 
     const {username, email, password,confirmPassword} = formData
 
+    const navigate = useNavigate()
+    const dispatch = useDispatch()
+
+    const {user, isLoading, isError, isSuccess, message} = useSelector((state)=> state.auth)
+
+    useEffect(()=>{
+        if(isError) {
+            console.log(message)
+        }
+        if(isSuccess || user) {
+            navigate('/')
+        }
+
+        dispatch(reset())
+    }, [user,isError,isSuccess,message,navigate,dispatch])
+
     // handleChange - updates formData when we type into form
     const handleChange = (event) => {
     //use the event object to detect key and value to update
@@ -21,8 +40,23 @@ function Register() {
     const handleSubmit = (event) => {
         //prevent page from refreshing on form submission
         event.preventDefault();
+
+        if(password !== confirmPassword){
+            alert("Passwords do not match")
+        } else {
+            const userData = {
+                username,
+                email,
+                password
+            }
+            dispatch(register(userData))
+        }
         console.log(formData,'*')
     };
+
+    if(isLoading) {
+        return 'Page Loading'
+    }
   return (
     <div>
         <form onSubmit={handleSubmit} action="">
