@@ -22,11 +22,11 @@ const {user} = useSelector((state) => state.auth)
           </button>
         ) : (
           <div>
-            <Link to="/login">
-              <div>Login</div>
+            <Link to="/business">
+              <div>Business</div>
             </Link>
-            <Link to="/register">
-              <div>Register</div>
+            <Link to="/customer">
+              <div>Customer</div>
             </Link>
           </div>
         )}

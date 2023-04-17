@@ -2,9 +2,10 @@ import React from 'react'
 import { useState, useEffect } from 'react'
 import {useSelector, useDispatch} from 'react-redux'
 import {useNavigate} from 'react-router-dom'
-import {register, login, reset} from '../features/auth/authSlice'
+import {register, login, reset} from '../features/auth/authBusinessSlice'
 
-function Register() {
+
+function Business() {
     const [formData, setFormData] = useState({
         username: "",
         email: "",
@@ -84,7 +85,7 @@ function Register() {
   return (
     <div>
         <form onSubmit={handleSubmit} action="">
-            <h1>Create Customer Account</h1>
+            <h1>Create Business Account</h1>
             <div>
             <input type="text" id="username" name="username" value={username} placeholder='Username' onChange={handleChange}/>
             </div>
@@ -103,7 +104,7 @@ function Register() {
         </form>
 
         <form onSubmit={handleSubmit2} action="">
-            <h1>Customer Login</h1>
+            <h1>Business Login</h1>
             <div>
                 <input type="text" id="email2" name="email2" value={email2} placeholder='Email' onChange={handleChange2}/>
             </div>
@@ -117,5 +118,4 @@ function Register() {
     </div>
   )
 }
-
-export default Register
+export default Business

@@ -8,7 +8,7 @@ function Interface() {
   const {user} = useSelector((state)=> state.auth)
   useEffect(()=> {
     if(!user) {
-      navigate('/login')
+      navigate('/')
     }
   }, [user,navigate])
   return (
