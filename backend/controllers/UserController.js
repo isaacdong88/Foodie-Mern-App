@@ -6,9 +6,9 @@ const bcrypt = require("bcryptjs");
 //Login user, route Post /user/login
 const loginUser = async (req, res) => {
   try {
-    const { email, password } = req.body;
-    const user = await User.findOne({ email });
-    if (user && (await bcrypt.compare(password, user.password))) {
+    const { email2, password2 } = req.body;
+    const user = await User.findOne({ email2 });
+    if (user && (await bcrypt.compare(password2, user.password))) {
       res.status(200).json({
         _id: user.id,
         username: user.username,
