@@ -2,6 +2,16 @@ const Business = require("../models/business");
 const jwt = require("jsonwebtoken");
 const bcrypt = require("bcryptjs");
 
+//fetch one specifice businesses, route GET /business/:id
+const fetchBusiness = async (req, res) => {
+  try {
+    const business = await Business.findById(req.params.id);
+    res.status(200).json(business);
+  } catch (error) {
+    res.status(400).json({ message: "No business available" });
+  }
+};
+
 //fetch all businesses, route GET /business/businesses
 const fetchBusinesses = async (req, res) => {
   try {
@@ -89,6 +99,7 @@ const genToken = (id) => {
 };
 
 module.exports = {
+  fetchBusiness,
   fetchBusinesses,
   loginBusiness,
   createBusiness,

@@ -6,6 +6,7 @@ import Interface from "./pages/Interface";
 import BusinessInterface from "./pages/BusinessInterface";
 import Customer from "./pages/Customer";
 import Welcome from "./pages/Welcome";
+import RestaurantPage from "./pages/RestaurantPage";
 
 function App() {
   return (
@@ -14,6 +15,10 @@ function App() {
       <Routes>
         <Route path="/" element={<Welcome />}></Route>
         <Route path="/interface" element={<Interface />}></Route>
+        <Route
+          path="/interface/business/:id"
+          element={<RestaurantPage />}
+        ></Route>
         <Route
           path="/businessinterface"
           element={<BusinessInterface />}

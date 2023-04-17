@@ -1,4 +1,5 @@
 import React from 'react'
+import {useState} from 'react'
 import { Link, useNavigate } from 'react-router-dom'
 import { useSelector, useDispatch } from 'react-redux'
 import {logout, reset} from '../features/auth/authSlice'
@@ -8,6 +9,22 @@ function Nav() {
 const navigate = useNavigate()
 const dispatch = useDispatch()
 const {user} = useSelector((state) => state.auth)
+const [display, setDisplay] = useState(null)
+
+  const fetchRestaurants = async () => {
+  const response = await fetch('/business/businesses')
+  const data = await response.json()
+  setDisplay(
+    data.map((restaurant, key) => {
+      return (
+        <div key={key}>
+          <a href={`/interface/business/${restaurant._id}`}><h2>{restaurant.username}</h2></a>
+        </div>
+      )
+    })
+  )
+  navigate('/interface')
+}
 
 
   return (
@@ -26,7 +43,7 @@ const {user} = useSelector((state) => state.auth)
                       <button>
                         My Reviews
                       </button>
-                      <button>
+                      <button onClick={fetchRestaurants}>
                         Restaurants
                       </button>
                     </div>

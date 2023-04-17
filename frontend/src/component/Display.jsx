@@ -1,8 +1,10 @@
 import React from 'react'
 
-function Display() {
+function Display({display}) {
   return (
-    <div>Display</div>
+    <div>
+      <h1>{display}</h1>
+    </div>
   )
 }
 
