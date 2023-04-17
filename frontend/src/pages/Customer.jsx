@@ -86,16 +86,16 @@ function Customer() {
         <form onSubmit={handleSubmit} action="">
             <h1>Create Customer Account</h1>
             <div>
-            <input type="text" id="username" name="username" value={username} placeholder='Username' onChange={handleChange}/>
+            <input type="text" id="username" name="username" value={username} placeholder='Username' required onChange={handleChange}/>
             </div>
             <div>
-                <input type="text" id="email" name="email" value={email} placeholder='Email' onChange={handleChange}/>
+                <input type="text" id="email" name="email" value={email} placeholder='Email' required onChange={handleChange}/>
             </div>
             <div>
-                <input type="password" id="password" name="password" value={password} placeholder='Password' onChange={handleChange}/>
+                <input type="password" id="password" name="password" value={password} placeholder='Password' required onChange={handleChange}/>
             </div>
             <div>
-                <input type="password" id="confirmPassword" name="confirmPassword" value={confirmPassword} placeholder='Confirm Password' onChange={handleChange}/>
+                <input type="password" id="confirmPassword" name="confirmPassword" value={confirmPassword} placeholder='Confirm Password' required onChange={handleChange}/>
             </div>
             <div>
                 <button type='submit'>Submit</button>
@@ -105,10 +105,10 @@ function Customer() {
         <form onSubmit={handleSubmit2} action="">
             <h1>Customer Login</h1>
             <div>
-                <input type="text" id="email2" name="email2" value={email2} placeholder='Email' onChange={handleChange2}/>
+                <input type="text" id="email2" name="email2" value={email2} placeholder='Email' required onChange={handleChange2}/>
             </div>
             <div>
-                <input type="password" id="password2" name="password2" value={password2} placeholder='Password' onChange={handleChange2}/>
+                <input type="password" id="password2" name="password2" value={password2} placeholder='Password' required onChange={handleChange2}/>
             </div>
             <div>
                 <button type='submit'>Submit</button>

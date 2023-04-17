@@ -9,17 +9,52 @@ const navigate = useNavigate()
 const dispatch = useDispatch()
 const {user} = useSelector((state) => state.auth)
 
+
   return (
     <div className='nav-bar'>
       <div>
         {user ? (
-          <button onClick={()=>{
-            dispatch(logout())
-            dispatch(reset())
-            navigate('/')
-          }}>
-            Logout
-          </button>
+                  user.accountType === 'customer' ? (
+                    <div>
+                      <button onClick={()=>{
+                        dispatch(logout())
+                        dispatch(reset())
+                        navigate('/')
+                        }}>
+                        Logout
+                      </button>
+                      <button>
+                        My Reviews
+                      </button>
+                      <button>
+                        Restaurants
+                      </button>
+                    </div>
+                    
+                  ) : (
+                    <div>
+                    <button onClick={()=>{
+                      dispatch(logout())
+                      dispatch(reset())
+                      navigate('/')
+                      }}>
+                      Logout
+                    </button>
+                    <button>
+                      Customer Reviews
+                    </button>
+                    <button>
+                      Edit Menu
+                    </button>
+                  </div>
+                  )
+          // <button onClick={()=>{
+          //   dispatch(logout())
+          //   dispatch(reset())
+          //   navigate('/')
+          // }}>
+          //   Logout
+          // </button>
         ) : (
           <div>
             <Link to="/business">

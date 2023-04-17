@@ -7,15 +7,14 @@ const bcrypt = require("bcryptjs");
 const loginUser = async (req, res) => {
   try {
     const { email2, password2 } = req.body;
-    console.log(email2);
     const user = await User.findOne({ email: email2 });
-    console.log(user);
     if (user && (await bcrypt.compare(password2, user.password))) {
       res.status(200).json({
         _id: user.id,
         username: user.username,
         email: user.email,
         token: genToken(user._id),
+        accountType: user.accountType,
       });
     } else {
       res.status(400).json({ message: "Invalid Credentials" });
@@ -39,6 +38,7 @@ const createUser = async (req, res) => {
         username: username,
         password: hassedPassword,
         email: email,
+        accountType: "customer",
       });
       res.status(201).json({
         _id: createUser.id,

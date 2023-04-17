@@ -23,6 +23,7 @@ const loginBusiness = async (req, res) => {
         username: business.username,
         email: business.email,
         token: genToken(business._id),
+        accountType: business.accountType,
       });
     } else {
       res.status(400).json({ message: "Invalid Credentials" });
@@ -45,6 +46,7 @@ const createBusiness = async (req, res) => {
         username: req.body.username,
         password: hassedPassword,
         email: req.body.email,
+        accountType: "business",
       });
       res.status(200).json({
         _id: createBusiness.id,

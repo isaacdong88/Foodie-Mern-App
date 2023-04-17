@@ -5,6 +5,7 @@ const customerSchema = new mongoose.Schema({
   password: { type: String, required: true },
   email: { type: String, required: true, unique: true },
   reviews: { type: mongoose.Schema.Types.ObjectId, ref: "Reviews" },
+  accountType: { type: String, required: true },
 });
 
 const Customers = mongoose.model("Customer", customerSchema);
