@@ -3,6 +3,7 @@ import { Route, Routes } from "react-router-dom";
 import Nav from "./component/Nav";
 import Business from "./pages/Business";
 import Interface from "./pages/Interface";
+import BusinessInterface from "./pages/BusinessInterface";
 import Customer from "./pages/Customer";
 import Welcome from "./pages/Welcome";
 
@@ -13,6 +14,10 @@ function App() {
       <Routes>
         <Route path="/" element={<Welcome />}></Route>
         <Route path="/interface" element={<Interface />}></Route>
+        <Route
+          path="/businessinterface"
+          element={<BusinessInterface />}
+        ></Route>
         <Route path="/business" element={<Business />}></Route>
         <Route path="/customer" element={<Customer />}></Route>
       </Routes>

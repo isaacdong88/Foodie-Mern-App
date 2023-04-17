@@ -16,7 +16,7 @@ const fetchBusinesses = async (req, res) => {
 const loginBusiness = async (req, res) => {
   try {
     const { email2, password2 } = req.body;
-    const business = await Business.findOne({ email2 });
+    const business = await Business.findOne({ email: email2 });
     if (business && (await bcrypt.compare(password2, business.password))) {
       res.status(200).json({
         _id: business.id,

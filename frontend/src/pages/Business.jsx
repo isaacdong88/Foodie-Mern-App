@@ -32,7 +32,7 @@ function Business() {
             console.log(message)
         }
         if(isSuccess || user) {
-            navigate('/')
+            navigate('/businessinterface')
         }
 
         dispatch(reset())
