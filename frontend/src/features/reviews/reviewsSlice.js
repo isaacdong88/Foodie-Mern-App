@@ -68,6 +68,36 @@ export const getReviews = createAsyncThunk(
   }
 );
 
+//delete user reviews
+export const deleteReview = createAsyncThunk(
+  "reviews/delete",
+  async (id, thunkAPI) => {
+    try {
+      const API_URL = "/reviews/";
+      const token = thunkAPI.getState().auth.user.token;
+      const deleteReview = async (id, token) => {
+        const config = {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        };
+        const response = await axios.delete(API_URL + id, config);
+
+        return response.data;
+      };
+      return await deleteReview(id, token);
+    } catch (error) {
+      const message =
+        (error.response &&
+          error.response.data &&
+          error.response.data.message) ||
+        error.message ||
+        error.toString();
+      return thunkAPI.rejectWithValue(message);
+    }
+  }
+);
+
 export const reviewSlice = createSlice({
   name: "reviews",
   initialState,
@@ -98,6 +128,21 @@ export const reviewSlice = createSlice({
         state.reviews = action.payload;
       })
       .addCase(getReviews.rejected, (state, action) => {
+        state.isLoading = false;
+        state.isError = true;
+        state.message = action.payload;
+      })
+      .addCase(deleteReview.pending, (state) => {
+        state.isLoading = true;
+      })
+      .addCase(deleteReview.fulfilled, (state, action) => {
+        state.isLoading = false;
+        state.isSuccess = true;
+        state.reviews = state.reviews.filter((review) => {
+          return review._id !== action.payload.id;
+        });
+      })
+      .addCase(deleteReview.rejected, (state, action) => {
         state.isLoading = false;
         state.isError = true;
         state.message = action.payload;

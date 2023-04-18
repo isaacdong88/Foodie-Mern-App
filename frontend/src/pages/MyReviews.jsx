@@ -4,6 +4,7 @@ import { useNavigate } from 'react-router-dom'
 import { useSelector, useDispatch } from 'react-redux'
 import { getReviews } from '../features/reviews/reviewsSlice'
 import { reset } from '../features/reviews/reviewsSlice'
+import { deleteReview } from '../features/reviews/reviewsSlice'
 
 function MyReviews() {
     const navigate = useNavigate()
@@ -41,7 +42,11 @@ function MyReviews() {
                             <div>Review for {review.businessName}</div>
                             <div>{new Date(review.createdAt).toLocaleString()} Rating {review.rating}/10</div>
                             <div>{review.review}</div>
-                      </div>
+                            <button onClick={()=> {
+                                dispatch(deleteReview(review._id))
+                            }}>X</button>
+                            <button>Edit Review</button>
+                        </div>
                     )
                 })}
             </div>
