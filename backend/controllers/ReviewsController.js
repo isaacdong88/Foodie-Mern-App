@@ -17,6 +17,8 @@ const createReviews = async (req, res) => {
       review: req.body.review,
       rating: req.body.rating,
       user: req.user.id,
+      customerName: req.user.username,
+      business: req.body.business,
     });
     res.status(200).json(reviews);
   } catch (error) {

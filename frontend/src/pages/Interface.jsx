@@ -2,7 +2,6 @@ import React from 'react'
 import { useState, useEffect } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { useSelector } from 'react-redux'
-import ReviewPost from '../component/ReviewPost'
 import Display from '../component/Display'
 
 function Interface() {
@@ -36,7 +35,6 @@ function Interface() {
   return (
     <div>
       <Display display={display}/>
-      <ReviewPost />
     </div>
   )
 }

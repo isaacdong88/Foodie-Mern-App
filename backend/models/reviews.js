@@ -8,9 +8,11 @@ const reviewsSchema = new mongoose.Schema(
       required: true,
     },
     business: {
-      type: mongoose.Schema.Types.ObjectId,
-      ref: "Business",
+      type: String,
       // required: true,
+    },
+    customerName: {
+      type: String,
     },
     review: {
       type: String,

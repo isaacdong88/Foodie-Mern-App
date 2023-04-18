@@ -1,6 +1,7 @@
 import React from 'react'
 import { useState, useEffect } from 'react'
 import { useParams } from 'react-router-dom'
+import ReviewPost from '../component/ReviewPost'
 
 function RestaurantPage() {
     const [display, setDisplay] = useState(null)
@@ -18,7 +19,11 @@ function RestaurantPage() {
         fetchRestaurants()
       }, [])
   return (
-    <div>{display?.username}</div>
+    <div>
+        {display?.username}
+        <ReviewPost restaurant={display}/>
+
+    </div>
   )
 }
 
