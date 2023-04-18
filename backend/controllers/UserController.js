@@ -45,6 +45,7 @@ const createUser = async (req, res) => {
         username: createUser.username,
         email: createUser.email,
         token: genToken(createUser._id),
+        accountType: createUser.accountType,
       });
     }
   } catch (error) {

@@ -7,3 +7,15 @@
   width: 100%;
   height: 5vh;
 }
+
+.rest-page-ctn {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.rest-page-reviews {
+  border: solid black;
+  width: 200px;
+  height: 80px;
+}

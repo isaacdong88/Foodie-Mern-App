@@ -1,9 +1,9 @@
 const Review = require("../models/reviews");
 
-//Get reviews, route GET /reviews
+//Get reviews, route GET /reviews/:id
 const fetchReviews = async (req, res) => {
   try {
-    const reviews = await Review.find();
+    const reviews = await Review.find({ business: req.params.id });
     res.status(200).json(reviews);
   } catch (error) {
     res.status(400).json({ message: "Can't find reviews" });

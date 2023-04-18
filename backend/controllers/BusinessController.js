@@ -63,6 +63,7 @@ const createBusiness = async (req, res) => {
         username: createBusiness.username,
         email: createBusiness.email,
         token: genToken(createBusiness._id),
+        accountType: createBusiness.accountType,
       });
     }
   } catch (error) {

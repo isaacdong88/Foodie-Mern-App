@@ -1,10 +1,9 @@
 import React from 'react'
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import { useSelector, useDispatch } from 'react-redux'
 import { createReview} from '../features/reviews/reviewsSlice'
 
 function ReviewPost(props) {
-    console.log(props.restaurant._id)
     const [formReview, setFormReview] = useState({
         review: "",
         rating: "",
