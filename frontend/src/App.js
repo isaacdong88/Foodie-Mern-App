@@ -7,6 +7,7 @@ import BusinessInterface from "./pages/BusinessInterface";
 import Customer from "./pages/Customer";
 import Welcome from "./pages/Welcome";
 import RestaurantPage from "./pages/RestaurantPage";
+import MyReviews from "./pages/MyReviews";
 
 function App() {
   return (
@@ -25,6 +26,7 @@ function App() {
         ></Route>
         <Route path="/business" element={<Business />}></Route>
         <Route path="/customer" element={<Customer />}></Route>
+        <Route path="/interface/myreviews" element={<MyReviews />}></Route>
       </Routes>
     </div>
   );

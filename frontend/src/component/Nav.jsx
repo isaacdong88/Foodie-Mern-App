@@ -40,8 +40,13 @@ const [display, setDisplay] = useState(null)
                         }}>
                         Logout
                       </button>
-                      <button>
+                      <button onClick={()=>{
+                        navigate('/interface/myreviews')
+                      }}>
                         My Reviews
+                        {/* <Link to="/interface/myreviews">
+                          <div>My Reviews</div>
+                        </Link> */}
                       </button>
                       <button onClick={fetchRestaurants}>
                         Restaurants

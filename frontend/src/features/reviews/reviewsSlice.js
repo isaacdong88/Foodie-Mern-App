@@ -38,6 +38,36 @@ export const createReview = createAsyncThunk(
   }
 );
 
+//Get user reviews
+export const getReviews = createAsyncThunk(
+  "reviews/allReviews",
+  async (_, thunkAPI) => {
+    try {
+      const API_URL = "/reviews/";
+      const token = thunkAPI.getState().auth.user.token;
+      const getReview = async (token) => {
+        const config = {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        };
+        const response = await axios.get(API_URL, config);
+
+        return response.data;
+      };
+      return await getReview(token);
+    } catch (error) {
+      const message =
+        (error.response &&
+          error.response.data &&
+          error.response.data.message) ||
+        error.message ||
+        error.toString();
+      return thunkAPI.rejectWithValue(message);
+    }
+  }
+);
+
 export const reviewSlice = createSlice({
   name: "reviews",
   initialState,
@@ -55,6 +85,19 @@ export const reviewSlice = createSlice({
         state.reviews.push(action.payload);
       })
       .addCase(createReview.rejected, (state, action) => {
+        state.isLoading = false;
+        state.isError = true;
+        state.message = action.payload;
+      })
+      .addCase(getReviews.pending, (state) => {
+        state.isLoading = true;
+      })
+      .addCase(getReviews.fulfilled, (state, action) => {
+        state.isLoading = false;
+        state.isSuccess = true;
+        state.reviews = action.payload;
+      })
+      .addCase(getReviews.rejected, (state, action) => {
         state.isLoading = false;
         state.isError = true;
         state.message = action.payload;

@@ -14,8 +14,23 @@
   align-items: center;
 }
 
+.rest-page-reviewsDis {
+  border: solid black;
+  width: 500px;
+  height: 500px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  overflow-y: scroll;
+}
+
+/* .rest-page-reviewsDis::-webkit-scrollbar {
+  display: none;
+} */
+
 .rest-page-reviews {
   border: solid black;
-  width: 200px;
-  height: 80px;
+  width: 450px;
+  height: 90px;
+  margin: 10px;
 }

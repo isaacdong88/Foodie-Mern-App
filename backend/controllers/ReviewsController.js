@@ -1,9 +1,19 @@
 const Review = require("../models/reviews");
 
-//Get reviews, route GET /reviews/:id
+//Get reviews for restaurants, route GET /reviews/:id
 const fetchReviews = async (req, res) => {
   try {
     const reviews = await Review.find({ business: req.params.id });
+    res.status(200).json(reviews);
+  } catch (error) {
+    res.status(400).json({ message: "Can't find reviews" });
+  }
+};
+
+//Get user reviews, route GET /reviews
+const userReviews = async (req, res) => {
+  try {
+    const reviews = await Review.find({ user: req.user.id });
     res.status(200).json(reviews);
   } catch (error) {
     res.status(400).json({ message: "Can't find reviews" });
@@ -19,6 +29,7 @@ const createReviews = async (req, res) => {
       user: req.user.id,
       customerName: req.user.username,
       business: req.body.business,
+      businessName: req.body.businessName,
     });
     res.status(200).json(reviews);
   } catch (error) {
@@ -46,6 +57,7 @@ const deleteReviews = async (req, res) => {
   }
 };
 module.exports = {
+  userReviews,
   fetchReviews,
   createReviews,
   editReviews,

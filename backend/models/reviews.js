@@ -14,6 +14,9 @@ const reviewsSchema = new mongoose.Schema(
     customerName: {
       type: String,
     },
+    businessName: {
+      type: String,
+    },
     review: {
       type: String,
       required: true,

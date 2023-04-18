@@ -2,6 +2,9 @@ import React from 'react'
 import { useState, useEffect } from 'react'
 import { useParams } from 'react-router-dom'
 import ReviewPost from '../component/ReviewPost'
+import {useSelector, useDispatch} from 'react-redux'
+import {useNavigate} from 'react-router-dom'
+import { reset } from '../features/reviews/reviewsSlice'
 
 function RestaurantPage() {
     const [display, setDisplay] = useState(null)
@@ -24,13 +27,28 @@ function RestaurantPage() {
                 return (
                   <div key={key} className='rest-page-reviews'>
                     <div>{review.customerName}</div>
+                    <div>{new Date(review.createdAt).toLocaleString()} Rating {review.rating}/10</div>
                     <div>{review.review}</div>
-                    <div>{review.rating}</div>
                   </div>
                 )
               })
             )
         }
+
+    const dispatch = useDispatch()
+    const navigate = useNavigate()    
+    const {isError, isSuccess, message} = useSelector((state)=> state.reviews)
+
+    useEffect(()=>{
+        if(isError) {
+            console.log(message)
+        }
+        if(isSuccess) {
+            fetchReviews()
+        }
+
+        dispatch(reset())
+    }, [isError,isSuccess,message,navigate,dispatch])    
 
     useEffect(()=>{
         fetchRestaurants()
@@ -38,13 +56,17 @@ function RestaurantPage() {
 
       useEffect(()=>{
         fetchReviews()
-      }, [])
+      },[])
       
   return (
     <div className='rest-page-ctn'>
         {display?.username}
-        {reviews}
-        <ReviewPost restaurant={display}/>
+        <div className='rest-page-reviewsDis'>
+            {reviews}
+        </div>
+        <div>
+            <ReviewPost restaurant={display}/>
+        </div>
     </div>
   )
 }

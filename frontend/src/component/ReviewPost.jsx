@@ -7,7 +7,8 @@ function ReviewPost(props) {
     const [formReview, setFormReview] = useState({
         review: "",
         rating: "",
-        business: ""
+        business: "",
+        businessName: ""
     })
 
     const { review, rating} = formReview
@@ -26,15 +27,16 @@ function ReviewPost(props) {
             const reviewData = {
                 review,
                 rating,
-                business: props.restaurant._id
+                business: props.restaurant._id,
+                businessName: props.restaurant.username
             }
             dispatch(createReview(reviewData))
             setFormReview({
                 review: "",
                 rating: "",
-                business: ""
+                business: "",
+                businessName: ""
             })
-            //pass the search term to moviesearch prop, which is apps getMovie function
             console.log(formReview,'*')
         };
   return (
