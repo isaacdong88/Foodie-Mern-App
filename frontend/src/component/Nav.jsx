@@ -32,7 +32,8 @@ const [display, setDisplay] = useState(null)
       <div>
         {user ? (
                   user.accountType === 'customer' ? (
-                    <div>
+                    <div className='nav-bar1'>
+                      <h3>Welcome {user.username}</h3>
                       <button onClick={()=>{
                         dispatch(logout())
                         dispatch(reset())
@@ -63,10 +64,10 @@ const [display, setDisplay] = useState(null)
                       Logout
                     </button>
                     <button>
-                      Customer Reviews
+                      Business Page
                     </button>
                     <button>
-                      Edit Menu
+                      Edit Business
                     </button>
                   </div>
                   )

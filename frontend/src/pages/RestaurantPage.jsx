@@ -39,6 +39,7 @@ function RestaurantPage() {
     const navigate = useNavigate()    
     const {isError, isSuccess, message} = useSelector((state)=> state.reviews)
 
+    //fetch new review again once user post a new review
     useEffect(()=>{
         if(isError) {
             console.log(message)
@@ -54,6 +55,7 @@ function RestaurantPage() {
         fetchRestaurants()
       }, [])
 
+      //initially fetches all reviews when page loads
       useEffect(()=>{
         fetchReviews()
       },[])
