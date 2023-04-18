@@ -45,7 +45,9 @@ function MyReviews() {
                             <button onClick={()=> {
                                 dispatch(deleteReview(review._id))
                             }}>X</button>
-                            <button>Edit Review</button>
+                            <button onClick={()=> {
+                                navigate(`/interface/myreviews/${review._id}`)
+                            }}>Edit Review</button>
                         </div>
                     )
                 })}

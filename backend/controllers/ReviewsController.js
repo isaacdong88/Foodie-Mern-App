@@ -10,6 +10,16 @@ const fetchReviews = async (req, res) => {
   }
 };
 
+//one review for user edit /review/:id
+const fetchReview = async (req, res) => {
+  try {
+    const reviews = await Review.findById(req.params.id);
+    res.status(200).json(reviews);
+  } catch (error) {
+    res.status(400).json({ message: "Can't find review" });
+  }
+};
+
 //Get user reviews, route GET /reviews
 const userReviews = async (req, res) => {
   try {
@@ -62,6 +72,7 @@ module.exports = {
   createReviews,
   editReviews,
   deleteReviews,
+  fetchReview,
 };
 
 // module.exports = {
