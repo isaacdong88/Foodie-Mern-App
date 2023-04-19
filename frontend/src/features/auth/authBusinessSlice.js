@@ -90,6 +90,36 @@ export const editBusiness = createAsyncThunk(
   }
 );
 
+//delete business
+export const deleteBusiness = createAsyncThunk(
+  "auth/delete",
+  async (id, thunkAPI) => {
+    try {
+      const API_URL = "/business/";
+      const token = thunkAPI.getState().auth.user.token;
+      const deleteBusiness = async (id, token) => {
+        const config = {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        };
+        const response = await axios.delete(API_URL + id, config);
+
+        return response.data;
+      };
+      return await deleteBusiness(id, token);
+    } catch (error) {
+      const message =
+        (error.response &&
+          error.response.data &&
+          error.response.data.message) ||
+        error.message ||
+        error.toString();
+      return thunkAPI.rejectWithValue(message);
+    }
+  }
+);
+
 //get business
 export const getBusiness = createAsyncThunk(
   "auth/fetch",
@@ -193,6 +223,19 @@ export const authSlice = createSlice({
         state.image = action.payload;
       })
       .addCase(editBusiness.rejected, (state, action) => {
+        state.isLoading = false;
+        state.isError = true;
+        state.message = action.payload;
+      })
+      .addCase(deleteBusiness.pending, (state) => {
+        state.isLoading = true;
+      })
+      .addCase(deleteBusiness.fulfilled, (state, action) => {
+        state.isLoading = false;
+        state.isSuccess = true;
+        state.user = null;
+      })
+      .addCase(deleteBusiness.rejected, (state, action) => {
         state.isLoading = false;
         state.isError = true;
         state.message = action.payload;

@@ -4,6 +4,8 @@ import { useSelector, useDispatch } from 'react-redux';
 import { useNavigate, useParams } from 'react-router-dom';
 import { editBusiness } from '../features/auth/authBusinessSlice';
 import { getBusiness } from '../features/auth/authBusinessSlice';
+import { deleteBusiness } from '../features/auth/authBusinessSlice';
+import { logout } from '../features/auth/authBusinessSlice';
 
 
 function EditBusiness() {
@@ -45,7 +47,7 @@ function EditBusiness() {
                 image: "",
             })
             console.log(businessForm,'*')
-            navigate('/businessinterface')
+            // navigate('/businessinterface')
         };
 
 
@@ -115,7 +117,16 @@ function EditBusiness() {
                 <button type='submit'>Update Photo</button>
             </form>
         </div>
+
+        <div>
+            <button onClick={()=>{
+                dispatch(deleteBusiness(user._id))
+                dispatch(logout())
+                navigate('/')
+            }}>Delete Business</button>
+        </div>
     </div>
+    
   )
 }
 
