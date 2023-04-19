@@ -37,10 +37,16 @@ function BusinessInterface() {
       },[])
 
   return (
-    <div>
-        {user.username}
-        <div className='rest-page-reviewsDis'>
-            {busReview}
+    <div className='bus-interface-ctn'>
+        <div className='bus-interface-profile'>
+            <h1>Profile Picture</h1>
+            <img src={user.image} alt="" />
+        </div>
+        <div>
+            <div><h1>Customer Reviews</h1></div>
+            <div className='rest-page-reviewsDis'>
+                {busReview}
+            </div>
         </div>
     </div>
   )

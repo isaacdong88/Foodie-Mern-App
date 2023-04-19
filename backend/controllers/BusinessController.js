@@ -34,6 +34,7 @@ const loginBusiness = async (req, res) => {
         email: business.email,
         token: genToken(business._id),
         accountType: business.accountType,
+        image: business.image,
       });
     } else {
       res.status(400).json({ message: "Invalid Credentials" });

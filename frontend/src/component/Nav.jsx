@@ -3,6 +3,7 @@ import {useState} from 'react'
 import { Link, useNavigate } from 'react-router-dom'
 import { useSelector, useDispatch } from 'react-redux'
 import {logout, reset} from '../features/auth/authSlice'
+import logo from '../foodielogo.png'
 
 
 function Nav() {
@@ -32,45 +33,71 @@ const [display, setDisplay] = useState(null)
       <div>
         {user ? (
                   user.accountType === 'customer' ? (
-                    <div className='nav-bar1'>
-                      <h3>Welcome {user.username}</h3>
-                      <button onClick={()=>{
-                        dispatch(logout())
-                        dispatch(reset())
-                        navigate('/')
+                    <div className='nav-bar2'>
+                      <div className='navbar2-sec1'>
+                        <div className='logo'>
+                          <img src={logo} alt="" onClick={() =>{
+                            navigate('/')
+                          }}/>
+                        </div>
+                        <div>
+                          <h2>Welcome {user.username}</h2>
+                        </div>
+                      </div>
+                      <div className='navbar2-sec2'>
+                        <button onClick={()=>{
+                          navigate('/interface/myreviews')
                         }}>
-                        Logout
-                      </button>
-                      <button onClick={()=>{
-                        navigate('/interface/myreviews')
-                      }}>
                         My Reviews
-                      </button>
-                      <button onClick={fetchRestaurants}>
-                        Restaurants
-                      </button>
+                        </button>
+                        <button onClick={fetchRestaurants}>
+                          Restaurants
+                        </button>
+                      </div>
+                      <div className='navbar2-sec3'>
+                        <button onClick={()=>{
+                          dispatch(logout())
+                          dispatch(reset())
+                          navigate('/')
+                          }}>
+                          Logout
+                        </button>
+                      </div>
                     </div>
                     
                   ) : (
-                    <div className='nav-bar1'>
-                      <h3>Welcome {user.username}</h3>
-                    <button onClick={()=>{
-                      dispatch(logout())
-                      dispatch(reset())
-                      navigate('/')
-                      }}>
-                      Logout
-                    </button>
-                    <button onClick={()=> {
-                      navigate('/businessinterface')
-                    }}>
-                      Business Page
-                    </button>
-                    <button onClick={()=>{
-                      navigate(`/businessinterface/${user._id}`)
-                    }}>
-                      Edit Business
-                    </button>
+                    <div className='nav-bar2'>
+                      <div className='navbar2-sec1'>
+                        <div className='logo'>
+                          <img src={logo} alt="" onClick={()=>{
+                            navigate('/')
+                          }}/>
+                        </div>
+                        <div>
+                          <h2>Welcome {user.username}</h2>
+                        </div>
+                      </div>
+                      <div className='navbar2-sec2'>
+                        <button onClick={()=> {
+                          navigate('/businessinterface')
+                        }}>
+                          Business Page
+                        </button>
+                        <button onClick={()=>{
+                          navigate(`/businessinterface/${user._id}`)
+                        }}>
+                          Edit Business
+                        </button>
+                      </div>
+                      <div className='navbar2-sec3'>
+                        <button onClick={()=>{
+                          dispatch(logout())
+                          dispatch(reset())
+                          navigate('/')
+                        }}>
+                          Logout
+                        </button>
+                      </div>
                   </div>
                   )
           // <button onClick={()=>{
@@ -81,13 +108,26 @@ const [display, setDisplay] = useState(null)
           //   Logout
           // </button>
         ) : (
-          <div>
-            <Link to="/business">
-              <div>Business</div>
-            </Link>
-            <Link to="/customer">
-              <div>Customer</div>
-            </Link>
+          <div className='nav-bar1'>
+            <div className='navbar1-sec1'>
+              <div className='logo'>
+                <img src={logo} alt="" onClick={()=>{
+                  navigate('/')
+                }}/>
+              </div>
+            </div>
+            <div className='navbar1-sec2'>
+              <button onClick={()=>{
+                navigate('/business')
+              }}>
+                Business
+              </button>
+              <button onClick={()=>{
+                navigate('/customer')
+              }}>
+                Customer
+              </button>
+            </div>
           </div>
         )}
       </div>

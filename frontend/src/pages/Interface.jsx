@@ -2,7 +2,7 @@ import React from 'react'
 import { useState, useEffect } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { useSelector } from 'react-redux'
-import Display from '../component/Display'
+// import Display from '../component/Display'
 
 function Interface() {
   const [display, setDisplay] = useState(null)
@@ -37,7 +37,8 @@ function Interface() {
   }, [])
   return (
     <div className='interface-ctn'>
-      <Display display={display}/>
+      {display}
+      {/* <Display display={display}/> */}
     </div>
   )
 }

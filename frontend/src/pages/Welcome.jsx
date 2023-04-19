@@ -1,8 +1,11 @@
 import React from 'react'
+import logo from '../welcomelogo.png'
 
 function Welcome() {
   return (
-    <div>Welcome</div>
+    <div className='welcome-page'>
+        <img src={logo} alt="" />
+    </div>
   )
 }
 
