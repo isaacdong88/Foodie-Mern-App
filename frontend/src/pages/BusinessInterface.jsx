@@ -1,12 +1,15 @@
 import React, { useState } from 'react'
 import { useEffect} from 'react'
-import { useNavigate } from 'react-router-dom'
-import { useSelector } from 'react-redux'
+import { useNavigate, useParams } from 'react-router-dom'
+import { useSelector, useDispatch } from 'react-redux'
+import { getBusiness } from '../features/business/businessSlice'
 
 function BusinessInterface() {
     const navigate = useNavigate()
+    const dispatch = useDispatch()
     
-    const {user} = useSelector((state)=> state.auth)
+    const {business} = useSelector((state)=> state.business)
+    const {user} = useSelector((state) => state.auth)
   const [busReview, setBusReview] = useState(null)
 
   const fetchReviews = async () => {
@@ -25,6 +28,10 @@ function BusinessInterface() {
     )
 }
 
+useEffect(()=>{
+    dispatch(getBusiness(user._id))
+},[])
+
   useEffect(()=> {
     if(!user) {
       navigate('/')
@@ -40,7 +47,7 @@ function BusinessInterface() {
     <div className='bus-interface-ctn'>
         <div className='bus-interface-profile'>
             <h1>Profile Picture</h1>
-            <img src={user.image} alt="" />
+            <img src={business.image} alt="" />
         </div>
         <div>
             <div><h1>Customer Reviews</h1></div>

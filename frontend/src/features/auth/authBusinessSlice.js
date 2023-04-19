@@ -59,6 +59,67 @@ export const login = createAsyncThunk("auth/login", async (user, thunkAPI) => {
   }
 });
 
+export const editBusiness = createAsyncThunk(
+  "auth/edit",
+  async (body, thunkAPI) => {
+    try {
+      const API_URL = "/business/";
+      const token = thunkAPI.getState().auth.user.token;
+
+      const editBusiness = async (body, token) => {
+        const config = {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        };
+        const response = await axios.put(API_URL + body._id, body, config);
+
+        return response.data;
+      };
+
+      return await editBusiness(body, token);
+    } catch (error) {
+      const message =
+        (error.response &&
+          error.response.data &&
+          error.response.data.message) ||
+        error.message ||
+        error.toString();
+      return thunkAPI.rejectWithValue(message);
+    }
+  }
+);
+
+//get business
+export const getBusiness = createAsyncThunk(
+  "auth/fetch",
+  async (id, thunkAPI) => {
+    try {
+      const API_URL = "/business/business/";
+      const token = thunkAPI.getState().auth.user.token;
+      const getBusiness = async (id, token) => {
+        const config = {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        };
+        const response = await axios.get(API_URL + id, config);
+
+        return response.data;
+      };
+      return await getBusiness(id, token);
+    } catch (error) {
+      const message =
+        (error.response &&
+          error.response.data &&
+          error.response.data.message) ||
+        error.message ||
+        error.toString();
+      return thunkAPI.rejectWithValue(message);
+    }
+  }
+);
+
 export const logout = createAsyncThunk("auth/logout", async () => {
   const logout = () => {
     localStorage.removeItem("user");
@@ -109,6 +170,32 @@ export const authSlice = createSlice({
       })
       .addCase(logout.fulfilled, (state) => {
         state.user = null;
+      })
+      .addCase(getBusiness.pending, (state) => {
+        state.isLoading = true;
+      })
+      .addCase(getBusiness.fulfilled, (state, action) => {
+        state.isLoading = false;
+        state.isSuccess = true;
+        state.user = action.payload;
+      })
+      .addCase(getBusiness.rejected, (state, action) => {
+        state.isLoading = false;
+        state.isError = true;
+        state.message = action.payload;
+      })
+      .addCase(editBusiness.pending, (state) => {
+        state.isLoading = true;
+      })
+      .addCase(editBusiness.fulfilled, (state, action) => {
+        state.isLoading = false;
+        state.isSuccess = true;
+        state.image = action.payload;
+      })
+      .addCase(editBusiness.rejected, (state, action) => {
+        state.isLoading = false;
+        state.isError = true;
+        state.message = action.payload;
       });
   },
 });

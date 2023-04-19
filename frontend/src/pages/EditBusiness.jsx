@@ -1,28 +1,63 @@
 import React from 'react'
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
+import { useSelector, useDispatch } from 'react-redux';
+import { useNavigate, useParams } from 'react-router-dom';
+import { editBusiness } from '../features/auth/authBusinessSlice';
+import { getBusiness } from '../features/auth/authBusinessSlice';
+
 
 function EditBusiness() {
+
+    const [businessForm, setBusinessForm] = useState({
+        image: "",
+    })
+    const {id} = useParams()
+
+    const {image} = businessForm
+
+    const {user, isLoading} = useSelector((state)=> state.auth)
+
+    const dispatch = useDispatch()
+    const navigate = useNavigate()
+
+    // useEffect(() => {
+    //     setBusinessForm(user.image)
+    // },[isLoading])
+
+
+    const businessChange = (event) => {
+        //use the event object to detect key and value to update
+            setBusinessForm({ ...businessForm, [event.target.name]: event.target.value });
+            console.log(businessForm)
+        };
+    
+        const businessSubmit = (event) => {
+            //prevent page from refreshing on form submission
+            event.preventDefault();
+
+            dispatch(editBusiness(
+                {
+                    ...user,
+                    image: image,
+                }
+                ))
+            setBusinessForm({
+                image: "",
+            })
+            console.log(businessForm,'*')
+            navigate('/businessinterface')
+        };
+
+
 
     const [dish, setDish] = useState(null);
     const [formDish, setFormDish] = useState({
         searchterm: "",
     })
 
-    // const fetchReviews = async () => {
-    //     const response = await fetch(`/reviews/${restaurant}`)
-    //     const data = await response.json()
-        // setReviews(
-        //   data.map((review, key) => {
-        //     return (
-        //       <div key={key} className='rest-page-reviews'>
-        //         <div>{review.customerName}</div>
-        //         <div>{new Date(review.createdAt).toLocaleString()} Rating {review.rating}/10</div>
-        //         <div>{review.review}</div>
-        //       </div>
-        //     )
-        //   })
-        // )
-    // }
+    useEffect(()=>{
+        dispatch(getBusiness(id))
+    },[])
 
 
     const fetchDish = async (searchTerm) => {
@@ -71,6 +106,14 @@ function EditBusiness() {
         <form action=""></form>
         <div className='meal-Result'>
             {dish ? dish : "Search for Menu items"}
+        </div>
+
+        <div>
+            <form action="" onSubmit={businessSubmit}>
+                <h2>Edit Business Info</h2>
+                Profile Picture <input type="text" name="image" value={businessForm.image} onChange={businessChange}/>
+                <button type='submit'>Update Photo</button>
+            </form>
         </div>
     </div>
   )
