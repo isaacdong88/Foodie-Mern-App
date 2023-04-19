@@ -9,6 +9,7 @@ import Welcome from "./pages/Welcome";
 import RestaurantPage from "./pages/RestaurantPage";
 import MyReviews from "./pages/MyReviews";
 import EditReviews from "./pages/EditReviews";
+import EditBusiness from "./pages/EditBusiness";
 
 function App() {
   return (
@@ -25,6 +26,7 @@ function App() {
           path="/businessinterface"
           element={<BusinessInterface />}
         ></Route>
+        <Route path="/businessinterface/:id" element={<EditBusiness />}></Route>
         <Route path="/business" element={<Business />}></Route>
         <Route path="/customer" element={<Customer />}></Route>
         <Route path="/interface/myreviews" element={<MyReviews />}></Route>

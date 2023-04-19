@@ -8,6 +8,7 @@ const businessSchema = new mongoose.Schema({
   businessname: { type: String },
   description: { type: String },
   menu: [Object],
+  image: { type: String },
   accountType: { type: String, required: true },
 });
 

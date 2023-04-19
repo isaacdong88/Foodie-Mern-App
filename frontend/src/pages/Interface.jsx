@@ -15,8 +15,11 @@ function Interface() {
     setDisplay(
       data.map((restaurant, key) => {
         return (
-          <div key={key}>
-            <a href={`/interface/business/${restaurant._id}`}><h2>{restaurant.username}</h2></a>
+          <div key={key} className='interface-buslink'>
+            <img src={restaurant.image} alt="" />
+            <div>
+              <a href={`/interface/business/${restaurant._id}`}><h2>{restaurant.username}</h2></a>
+            </div>
           </div>
         )
       })
@@ -33,7 +36,7 @@ function Interface() {
     fetchRestaurants()
   }, [])
   return (
-    <div>
+    <div className='interface-ctn'>
       <Display display={display}/>
     </div>
   )

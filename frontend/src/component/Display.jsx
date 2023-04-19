@@ -2,8 +2,10 @@ import React from 'react'
 
 function Display({display}) {
   return (
-    <div>
-      <h1>{display}</h1>
+    <div className='display-comp'>
+      <div>
+        {display}
+      </div>
     </div>
   )
 }

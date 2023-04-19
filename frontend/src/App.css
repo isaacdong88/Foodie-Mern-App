@@ -21,8 +21,7 @@ body {
 
 .rest-page-ctn {
   display: flex;
-  flex-direction: column;
-  align-items: center;
+  justify-content: space-around;
 }
 
 .rest-page-reviewsDis {
@@ -45,4 +44,66 @@ body {
   width: 450px;
   height: 90px;
   margin: 10px;
+}
+
+.meal-Result {
+  display: flex;
+  flex-wrap: wrap;
+  height: 30vh;
+  width: 100%;
+  overflow-y: scroll;
+  justify-content: center;
+}
+
+.meal-item {
+  border: solid red;
+  width: 200px;
+  height: 20vh;
+}
+
+.meal-item img {
+  border: groove;
+  border-radius: 5px;
+  width: 100px;
+  height: 100px;
+}
+
+.bus-profile {
+  border: solid black;
+  height: 80vh;
+  width: 50vh;
+}
+
+.bus-profile img {
+  width: 100%;
+}
+
+.display-comp {
+  border: solid greenyellow;
+  width: 100%;
+  display: flex;
+}
+
+/* .interface-ctn {
+  border: solid red;
+  display: flex;
+  justify-content: center;
+} */
+
+.interface-buslink {
+  border: groove;
+  display: flex;
+  width: 80vh;
+  height: 30vh;
+  margin-bottom: 10px;
+}
+
+.interface-buslink div {
+  width: 50%;
+  display: flex;
+  justify-content: center;
+}
+
+.interface-buslink img {
+  width: 50%;
 }

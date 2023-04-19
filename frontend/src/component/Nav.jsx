@@ -45,9 +45,6 @@ const [display, setDisplay] = useState(null)
                         navigate('/interface/myreviews')
                       }}>
                         My Reviews
-                        {/* <Link to="/interface/myreviews">
-                          <div>My Reviews</div>
-                        </Link> */}
                       </button>
                       <button onClick={fetchRestaurants}>
                         Restaurants
@@ -55,7 +52,8 @@ const [display, setDisplay] = useState(null)
                     </div>
                     
                   ) : (
-                    <div>
+                    <div className='nav-bar1'>
+                      <h3>Welcome {user.username}</h3>
                     <button onClick={()=>{
                       dispatch(logout())
                       dispatch(reset())
@@ -63,10 +61,14 @@ const [display, setDisplay] = useState(null)
                       }}>
                       Logout
                     </button>
-                    <button>
+                    <button onClick={()=> {
+                      navigate('/businessinterface')
+                    }}>
                       Business Page
                     </button>
-                    <button>
+                    <button onClick={()=>{
+                      navigate(`/businessinterface/${user._id}`)
+                    }}>
                       Edit Business
                     </button>
                   </div>

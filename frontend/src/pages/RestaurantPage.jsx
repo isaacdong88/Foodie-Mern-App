@@ -62,12 +62,18 @@ function RestaurantPage() {
       
   return (
     <div className='rest-page-ctn'>
-        {display?.username}
-        <div className='rest-page-reviewsDis'>
-            {reviews}
+        <div className='bus-profile'>
+            <h1>{display?.username}</h1>
+            <img src={display?.image} alt="" />
         </div>
         <div>
-            <ReviewPost restaurant={display}/>
+            <h1>Customer Reviews</h1>
+            <div className='rest-page-reviewsDis'>
+                {reviews}
+            </div>
+            <div>
+                <ReviewPost restaurant={display}/>
+            </div>
         </div>
     </div>
   )
