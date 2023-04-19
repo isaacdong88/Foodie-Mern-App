@@ -63,7 +63,12 @@ useEffect(() => {
             <input type="number" id='rating' name='rating' value={formReview.rating} min='1' max='10' onChange={handleChange}/> <br />
             <div>
                 <button type='submit'>Add Review</button>
-            </div> 
+            </div>
+            <div>
+                <button onClick={()=>{
+                    navigate('/interface/myreviews')
+                }}>Back</button>
+            </div>  
         </form>
     </div>
   )

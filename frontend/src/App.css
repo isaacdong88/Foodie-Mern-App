@@ -123,10 +123,55 @@ a {
 } */
 
 .rest-page-reviews {
-  border: solid black;
-  width: 450px;
-  height: 90px;
+  border: groove rgba(191, 101, 11, 0.6);
+  width: 70%;
+  height: 20vh;
   margin: 10px;
+}
+
+.reviewlist-sec1 {
+  /* border: solid black; */
+  display: flex;
+  height: 5vh;
+  justify-content: space-between;
+  background-color: rgba(191, 101, 11, 0.3);
+}
+
+.rl-sec1a {
+  /* border: solid black; */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding-left: 10px;
+}
+
+.rl-sec1b {
+  /* border: solid black; */
+  display: flex;
+  justify-content: start;
+  align-items: start;
+}
+
+.myreview-list {
+  /* border: solid red; */
+  display: flex;
+  justify-content: center;
+  height: 89vh;
+  flex-wrap: wrap;
+  overflow-y: scroll;
+  font-size: 19px;
+  font-weight: 500;
+}
+
+.myreview-list button {
+  font-weight: bold;
+  background-color: rgba(191, 101, 11, 0.2);
+  border: solid rgba(191, 101, 11, 0.3);
+  cursor: pointer;
+}
+
+.myreview-list::-webkit-scrollbar {
+  display: none;
 }
 
 .meal-Result {
@@ -213,4 +258,5 @@ a {
 
 .bus-interface-profile img {
   width: 100%;
+  height: 35vh;
 }

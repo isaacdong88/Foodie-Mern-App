@@ -35,19 +35,25 @@ function MyReviews() {
   return (
     <div>
         {reviews.length > 0 ? (
-            <div>
+            <div className='myreview-list'>
                 {reviews.map((review, key)=> {
                     return (
                         <div key={key} className='rest-page-reviews'>
-                            <div>Review for {review.businessName}</div>
-                            <div>{new Date(review.createdAt).toLocaleString()} Rating {review.rating}/10</div>
+                            <div className='reviewlist-sec1'>
+                                <div className='rl-sec1a'>
+                                    <h3>Review for {review.businessName}</h3>
+                                </div>
+                                <div className='rl-sec1b'>
+                                    <button onClick={()=> {
+                                        navigate(`/interface/myreviews/${review._id}`)
+                                    }}>Edit Review</button>
+                                    <button onClick={()=> {
+                                        dispatch(deleteReview(review._id))
+                                    }}>X</button>
+                                </div>
+                            </div>
+                            <div className=''>{new Date(review.createdAt).toLocaleString()} Rating {review.rating}/10</div>
                             <div>{review.review}</div>
-                            <button onClick={()=> {
-                                dispatch(deleteReview(review._id))
-                            }}>X</button>
-                            <button onClick={()=> {
-                                navigate(`/interface/myreviews/${review._id}`)
-                            }}>Edit Review</button>
                         </div>
                     )
                 })}

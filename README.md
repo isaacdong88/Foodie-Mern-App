@@ -31,4 +31,11 @@ Application Features:
     also update their landing page.
     4. Third party 'MealDB' API is used so businesses can easily search and items to their menu
 
+Dependencies:
+
+    1. React Router-Dom
+    2. React Redux Toolkit
+    3. Bcrypt Password Encryption
+    4. JWT JSON Web Token
+
 ![Title Screen](https://raw.githubusercontent.com/isaacdong88/Foodie-Mern-App/master/frontend/src/foodieApp.png)

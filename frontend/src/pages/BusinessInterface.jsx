@@ -3,6 +3,7 @@ import { useEffect} from 'react'
 import { useNavigate, useParams } from 'react-router-dom'
 import { useSelector, useDispatch } from 'react-redux'
 import { getBusiness } from '../features/business/businessSlice'
+import { reset } from '../features/business/businessSlice'
 
 function BusinessInterface() {
     const navigate = useNavigate()
@@ -30,6 +31,9 @@ function BusinessInterface() {
 
 useEffect(()=>{
     dispatch(getBusiness(user._id))
+    return () => {
+        dispatch(reset())
+    }
 },[])
 
   useEffect(()=> {
