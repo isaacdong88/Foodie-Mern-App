@@ -31,4 +31,4 @@ Application Features:
     also update their landing page.
     4. Third party 'MealDB' API is used so businesses can easily search and items to their menu
 
-![Title Screen](https://raw.githubusercontent.com/isaacdong88/NBA-PROFILE-APP/master/src/NBAWIKI.png)
+![Title Screen](https://raw.githubusercontent.com/isaacdong88/Foodie-Mern-App/master/frontend/src/foodieApp.png)
