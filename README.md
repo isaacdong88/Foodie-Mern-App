@@ -1,70 +1,34 @@
-# Getting Started with Create React App
+Foodie Review Full Stack MERN Application
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Objective:
+This project aims to develop a food review platform using Javascript, HTML, CSS, MongoDB/Mongoose, Express, React.js, and Node.js. The application will request external data from 'MealDB' API.
 
-## Available Scripts
+Implementation:
 
-In the project directory, you can run:
+    1. Setting up backend environment using Mongoose, Express, and Node.js.
+    2. Connecting to MongoDB, then creating the CRUD HTTP routes for each schema. Setting up the backend folder
+    following MVC design pattern.
+    3. Setting up frontend environment and developing UI/UX using React.js.
+    4. Researching and integrating third party API into the application.
+    5. Challenges:
+        1. Initial set up for backend took some time, need to use Postman to test that each CRUD route works.
+        2. Connecting the frontend to backend is very difficult. Setting up Redux as control state for http requests to MongoDB.
+        4. Implementing user authorization and authentication with Bcrypt and JWT (JSON Web Token)
+        5. Referencing Traversy Media to setup this full stack application.
 
-### `npm start`
+Installation:
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+    1. Will need secret environment variables to run the application
+        1. MONGODB_URI: Get personal URI from MongoDB
+        2. JWT_SECRET: Create a secret key for authentication using JWT
+    2. Run npm start in terminal to start the application
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+Application Features:
 
-### `npm test`
+    1. Can create both Business or Customer Accounts with all informations stored in MongoDB
+    2. Customers can create an account then can write/edit/delete reviews for each restaurant
+    3. Businesses can create an account on the platform so they can receive customers reviews. Businesses can
+    also update their landing page.
+    4. Third party 'MealDB' API is used so businesses can easily search and items to their menu
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
-
-### `npm run build`
-
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
-
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+![Title Screen](https://raw.githubusercontent.com/isaacdong88/NBA-PROFILE-APP/master/src/NBAWIKI.png)
