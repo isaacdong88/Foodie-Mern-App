@@ -40,10 +40,11 @@ function ReviewPost(props) {
             console.log(formReview,'*')
         };
   return (
-    <div>
+    <div className='write-review-form'>
         <form onSubmit={handleSubmit} action="">
             <h2>Write Review</h2>
-            <input type="text" name='review' value={review} onChange={handleChange} /> <br />
+            {/* <input className='text-field' type="text" name='review' value={review} onChange={handleChange} /> <br /> */}
+            <textarea name="review" id="review" value={review} cols="40" rows="12" onChange={handleChange} ></textarea><br />
             <label htmlFor="rating">Bad 1-10 Excellent</label>
             <input type="number" id='rating' name='rating' value={rating} min='1' max='10' onChange={handleChange}/> <br />
             <div>

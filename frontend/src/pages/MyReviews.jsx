@@ -52,8 +52,15 @@ function MyReviews() {
                                     }}>X</button>
                                 </div>
                             </div>
-                            <div className=''>{new Date(review.createdAt).toLocaleString()} Rating {review.rating}/10</div>
-                            <div>{review.review}</div>
+                            <div className='rl-sec1c'>
+                                <div>
+                                    Rating {review.rating}/10
+                                </div>
+                                <div>
+                                    {new Date(review.createdAt).toLocaleString()}
+                                </div>
+                            </div>
+                            <div className='rl-sec1d'>{review.review}</div>
                         </div>
                     )
                 })}

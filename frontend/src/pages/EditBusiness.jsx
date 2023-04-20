@@ -8,6 +8,7 @@ import { deleteBusiness } from '../features/auth/authBusinessSlice';
 import { logout } from '../features/auth/authBusinessSlice';
 
 
+
 function EditBusiness() {
 
     const [businessForm, setBusinessForm] = useState({
@@ -24,7 +25,7 @@ function EditBusiness() {
 
     // useEffect(() => {
     //     setBusinessForm(user.image)
-    // },[isLoading])
+    // },[user,isLoading])
 
 
     const businessChange = (event) => {
@@ -78,11 +79,18 @@ function EditBusiness() {
               <div>
                 <img src={dish.strMealThumb} alt="" />
               </div>
+              <div>
+                <button>Add to Menu</button>
+              </div>
             </div>
           )
         })
       )
     };
+
+    useEffect(()=>{
+        fetchDish('chicken')
+    },[])
 
     //handleChange - updates formData when we type into form
     const handleChange = (event) => {

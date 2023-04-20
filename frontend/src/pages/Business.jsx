@@ -3,6 +3,7 @@ import { useState, useEffect } from 'react'
 import {useSelector, useDispatch} from 'react-redux'
 import {useNavigate} from 'react-router-dom'
 import {register, login, reset} from '../features/auth/authBusinessSlice'
+import divider from '../divider.png'
 
 
 function Business() {
@@ -83,38 +84,47 @@ function Business() {
         return 'Page Loading'
     }
   return (
-    <div>
-        <form onSubmit={handleSubmit} action="">
-            <h1>Create Business Account</h1>
-            <div>
-            <input type="text" id="username" name="username" value={username} placeholder='Username' required onChange={handleChange}/>
-            </div>
-            <div>
-                <input type="text" id="email" name="email" value={email} placeholder='Email' required onChange={handleChange}/>
-            </div>
-            <div>
-                <input type="password" id="password" name="password" value={password} placeholder='Password' required onChange={handleChange}/>
-            </div>
-            <div>
-                <input type="password" id="confirmPassword" name="confirmPassword" value={confirmPassword} placeholder='Confirm Password' required onChange={handleChange}/>
-            </div>
-            <div>
-                <button type='submit'>Submit</button>
-            </div>
-        </form>
+    <div className='login-form'>
+        <div className='form-register'>
+            <form onSubmit={handleSubmit} action="">
+                <h2>Create Business Account</h2>
+                <div>
+                <input type="text" id="username" name="username" value={username} placeholder='Username' required onChange={handleChange}/>
+                </div>
+                <div>
+                    <input type="text" id="email" name="email" value={email} placeholder='Email' required onChange={handleChange}/>
+                </div>
+                <div>
+                    <input type="password" id="password" name="password" value={password} placeholder='Password' required onChange={handleChange}/>
+                </div>
+                <div>
+                    <input type="password" id="confirmPassword" name="confirmPassword" value={confirmPassword} placeholder='Confirm Password' required onChange={handleChange}/>
+                </div>
+                <div>
+                    <button type='submit'>Register</button>
+                </div>
+            </form>
+        </div>
 
-        <form onSubmit={handleSubmit2} action="">
-            <h1>Business Login</h1>
-            <div>
-                <input type="text" id="email2" name="email2" value={email2} placeholder='Email' required onChange={handleChange2}/>
-            </div>
-            <div>
-                <input type="password" id="password2" name="password2" value={password2} placeholder='Password' required onChange={handleChange2}/>
-            </div>
-            <div>
-                <button type='submit'>Submit</button>
-            </div>
-        </form>
+        <div className='form-divider'>
+            <img src={divider} alt="" />
+        </div>
+
+        <div className='login-sec'>
+            <form onSubmit={handleSubmit2} action="">
+                <h2>Business Login</h2>
+                <div>
+                    <input type="text" id="email2" name="email2" value={email2} placeholder='Email' required onChange={handleChange2}/>
+                </div>
+                <div>
+                    <input type="password" id="password2" name="password2" value={password2} placeholder='Password' required onChange={handleChange2}/>
+                </div>
+                <div>
+                    <button type='submit'>Login</button>
+                </div>
+            </form>
+        </div>
+
     </div>
   )
 }

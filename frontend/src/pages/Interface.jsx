@@ -17,7 +17,7 @@ function Interface() {
         return (
           <div key={key} className='interface-buslink'>
             <img src={restaurant.image} alt="" />
-            <div>
+            <div className='interface-link-des'>
               <a href={`/interface/business/${restaurant._id}`}><h2>{restaurant.username}</h2></a>
             </div>
           </div>

@@ -20,13 +20,13 @@ a {
   /* border: solid black; */
   width: 8vh;
   height: 8vh;
-  /* border-radius: 50%; */
+  border-radius: 50%;
 }
 
 .logo img {
   width: 100%;
   cursor: pointer;
-  /* border-radius: 50%; */
+  border-radius: 50%;
 }
 
 .nav-bar {
@@ -60,7 +60,7 @@ a {
 .navbar1-sec2 {
   display: flex;
   align-items: center;
-  justify-content: end;
+  justify-content: flex-end;
   /* border: solid blue; */
   width: 50%;
   padding-right: 20px;
@@ -98,19 +98,84 @@ a {
   width: 33%;
   display: flex;
   align-items: center;
-  justify-content: end;
+  justify-content: flex-end;
   padding-right: 20px;
 }
 
 .rest-page-ctn {
+  /* border: solid black; */
+  height: 90vh;
   display: flex;
   justify-content: space-around;
 }
 
+.bus-profile {
+  /* border: solid black; */
+  height: 30vh;
+  width: 13%;
+  margin-top: 18px;
+  margin-left: 15px;
+}
+
+.bus-profile img {
+  width: 100%;
+  height: 20vh;
+  border-radius: 10px;
+}
+
+.bus-profile h3 {
+  margin-top: 0px;
+}
+
+.write-review-form {
+  /* border: green solid; */
+  width: 60vh;
+  height: 60vh;
+  display: flex;
+  padding-top: 18vh;
+}
+
+.write-review-form form {
+  /* border: purple solid; */
+  width: 100%;
+  height: 40vh;
+  background-color: rgba(191, 101, 11, 0.1);
+}
+
+.write-review-form h2 {
+  /* border: solid black; */
+  margin-top: 1px;
+  margin-bottom: 2px;
+}
+
+.write-review-form input {
+  background-color: rgba(191, 101, 11, 0.2);
+  border: groove rgba(191, 101, 11, 0.2);
+  font-weight: bold;
+}
+
+textarea {
+  background-color: rgba(191, 101, 11, 0.2);
+  border: groove rgba(191, 101, 11, 0.2);
+  font-weight: bold;
+}
+
+.customer-reviews {
+  /* border: solid red; */
+  height: 90vh;
+  width: 50%;
+}
+
+.customer-reviews h2 {
+  /* border: solid black; */
+  margin-top: 1px;
+  margin-bottom: 2px;
+}
+
 .rest-page-reviewsDis {
-  border: solid black;
-  width: 500px;
-  height: 500px;
+  /* border: solid black; */
+  width: 100%;
+  height: 78vh;
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
@@ -118,15 +183,49 @@ a {
   overflow-y: scroll;
 }
 
-/* .rest-page-reviewsDis::-webkit-scrollbar {
+.rest-page-reviewsDis::-webkit-scrollbar {
   display: none;
-} */
+}
 
 .rest-page-reviews {
   border: groove rgba(191, 101, 11, 0.6);
-  width: 70%;
-  height: 20vh;
+  width: 90%;
+  height: 25vh;
   margin: 10px;
+  font-weight: 500;
+}
+
+.rpr-sec1 {
+  /* border: solid black; */
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  font-size: 17px;
+  padding-left: 5px;
+  background-color: rgba(191, 101, 11, 0.3);
+}
+
+.rpr-sec2 {
+  /* border: solid black; */
+  display: flex;
+  justify-content: space-between;
+  padding-left: 5px;
+  background-color: rgb(252, 185, 39);
+}
+
+.rpr-sec3 {
+  /* border: solid black; */
+  display: flex;
+  overflow: scroll;
+  height: 19vh;
+  background-color: rgb(252, 185, 39);
+  text-align: start;
+  padding-left: 5px;
+  text-indent: 20px;
+}
+
+.rpr-sec3::-webkit-scrollbar {
+  display: none;
 }
 
 .reviewlist-sec1 {
@@ -148,14 +247,40 @@ a {
 .rl-sec1b {
   /* border: solid black; */
   display: flex;
-  justify-content: start;
-  align-items: start;
+  justify-content: flex-start;
+  align-items: flex-start;
+}
+
+.rl-sec1c {
+  /* border: solid black; */
+  height: 4.1vh;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-left: 5px;
+  padding-right: 5px;
+  background-color: rgb(252, 185, 39);
+}
+
+.rl-sec1d {
+  /* border: solid black; */
+  height: 16vh;
+  text-align: start;
+  text-indent: 30px;
+  padding-left: 5px;
+  overflow: scroll;
+  background-color: rgb(252, 185, 39);
+}
+
+.rl-sec1d::-webkit-scrollbar {
+  display: none;
 }
 
 .myreview-list {
   /* border: solid red; */
   display: flex;
   justify-content: center;
+  align-content: flex-start;
   height: 89vh;
   flex-wrap: wrap;
   overflow-y: scroll;
@@ -177,33 +302,29 @@ a {
 .meal-Result {
   display: flex;
   flex-wrap: wrap;
-  height: 30vh;
+  height: 40vh;
   width: 100%;
   overflow-y: scroll;
   justify-content: center;
+  margin-top: 10px;
+}
+
+.meal-Result::-webkit-scrollbar {
+  display: none;
 }
 
 .meal-item {
-  border: solid red;
-  width: 200px;
-  height: 20vh;
+  /* border: solid red; */
+  width: 300px;
+  height: 23vh;
+  font-weight: 500;
 }
 
 .meal-item img {
   border: groove;
   border-radius: 5px;
-  width: 100px;
-  height: 100px;
-}
-
-.bus-profile {
-  border: solid black;
-  height: 80vh;
-  width: 50vh;
-}
-
-.bus-profile img {
-  width: 100%;
+  width: 130px;
+  height: 105px;
 }
 
 .display-comp {
@@ -235,6 +356,10 @@ a {
   margin-bottom: 10px;
 }
 
+.interface-link-des {
+  background-color: rgb(252, 185, 39);
+}
+
 .interface-buslink div {
   width: 50%;
   display: flex;
@@ -246,17 +371,141 @@ a {
 }
 
 .bus-interface-ctn {
+  /* border: solid red; */
   display: flex;
   justify-content: space-around;
 }
 
 .bus-interface-profile {
-  border: solid black;
+  /* border: solid green; */
   height: 80vh;
   width: 50vh;
+}
+
+.bus-interface-profile h2 {
+  margin-top: 1px;
+  margin-bottom: 1px;
 }
 
 .bus-interface-profile img {
   width: 100%;
   height: 35vh;
 }
+
+.bus-interface-rewiew {
+  /* border: solid; */
+  width: 60%;
+}
+
+.bus-interface-rewiew h2 {
+  /* border: solid; */
+  margin-top: 1px;
+  margin-bottom: 1px;
+}
+
+.bus-page-reviewsDis {
+  /* border: solid black; */
+  width: 100%;
+  height: 78vh;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-content: flex-start;
+  overflow-y: scroll;
+}
+
+.bus-page-reviewsDis::-webkit-scrollbar {
+  display: none;
+}
+
+.login-form {
+  /* border: solid black; */
+  margin-top: 14vh;
+  display: flex;
+  justify-content: center;
+  height: 45vh;
+}
+
+.form-register {
+  /* border: solid black; */
+  width: 30%;
+  height: 45vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.form-divider {
+  /* border: solid black; */
+  width: 8%;
+  height: 45vh;
+}
+
+.form-divider img {
+  width: 100%;
+  height: 45vh;
+}
+
+.login-sec {
+  /* border: solid black; */
+  width: 30%;
+  height: 45vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.login-form form {
+  /* border: groove rgba(191, 101, 11, 0.2); */
+  height: 32vh;
+  width: 55vh;
+  background-color: rgba(191, 101, 11, 0.1);
+}
+
+.login-form input {
+  width: 35vh;
+  height: 3vh;
+  margin-bottom: 2px;
+  background-color: rgba(191, 101, 11, 0.2);
+  border: groove rgba(191, 101, 11, 0.2);
+  font-weight: bold;
+}
+
+.login-form button {
+  background-color: rgba(191, 101, 11, 0.2);
+  border: groove rgba(191, 101, 11, 0.2);
+}
+
+.edit-review-form {
+  /* border: green solid; */
+  width: 100%;
+  height: 60vh;
+  display: flex;
+  justify-content: center;
+  padding-top: 18vh;
+}
+
+.edit-review-form form {
+  /* border: purple solid; */
+  width: 30%;
+  height: 45vh;
+  background-color: rgba(191, 101, 11, 0.1);
+}
+
+.edit-review-form h2 {
+  /* border: solid black; */
+  margin-top: 1px;
+  margin-bottom: 2px;
+}
+
+.edit-review-form input {
+  background-color: rgba(191, 101, 11, 0.2);
+  border: groove rgba(191, 101, 11, 0.2);
+  font-weight: bold;
+}
+
+/* textarea {
+  background-color: rgba(191, 101, 11, 0.2);
+  border: groove rgba(191, 101, 11, 0.2);
+  font-weight: bold;
+} */

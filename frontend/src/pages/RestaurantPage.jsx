@@ -26,9 +26,16 @@ function RestaurantPage() {
               data.map((review, key) => {
                 return (
                   <div key={key} className='rest-page-reviews'>
-                    <div>{review.customerName}</div>
-                    <div>{new Date(review.createdAt).toLocaleString()} Rating {review.rating}/10</div>
-                    <div>{review.review}</div>
+                    <div className='rpr-sec1'>Review by {review.customerName}</div>
+                    <div className='rpr-sec2'>
+                        <div>
+                            Rating {review.rating}/10
+                        </div>
+                        <div>
+                            {new Date(review.createdAt).toLocaleString()}
+                        </div>
+                    </div>
+                    <div className='rpr-sec3'>{review.review}</div>
                   </div>
                 )
               })
@@ -63,17 +70,17 @@ function RestaurantPage() {
   return (
     <div className='rest-page-ctn'>
         <div className='bus-profile'>
-            <h1>{display?.username}</h1>
             <img src={display?.image} alt="" />
+            <h3>{display?.username}</h3>
         </div>
-        <div>
-            <h1>Customer Reviews</h1>
+        <div className='customer-reviews'>
+            <h2>Customer Reviews</h2>
             <div className='rest-page-reviewsDis'>
                 {reviews}
             </div>
-            <div>
-                <ReviewPost restaurant={display}/>
-            </div>
+        </div>
+        <div>
+            <ReviewPost restaurant={display}/>
         </div>
     </div>
   )

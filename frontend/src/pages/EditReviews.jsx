@@ -54,15 +54,15 @@ useEffect(() => {
             navigate('/interface/myreviews')
         };
   return (
-    <div>
+    <div className='edit-review-form'>
         <form onSubmit={handleSubmit} action="">
-            <h2>Write Review</h2>
-
-            <input type="text" name='review' value={formReview.review} onChange={handleChange} /> <br />
+            <h2>Edit Review</h2>
+            <textarea name="review" id="review" value={formReview.review} cols="40" rows="12" onChange={handleChange} ></textarea><br />
+            {/* <input type="text" name='review' value={formReview.review} onChange={handleChange} /> <br /> */}
             <label htmlFor="rating">Bad 1-10 Excellent</label>
             <input type="number" id='rating' name='rating' value={formReview.rating} min='1' max='10' onChange={handleChange}/> <br />
             <div>
-                <button type='submit'>Add Review</button>
+                <button type='submit'>Update Review</button>
             </div>
             <div>
                 <button onClick={()=>{
@@ -73,5 +73,18 @@ useEffect(() => {
     </div>
   )
 }
+
+// {/* <div className='write-review-form'>
+// <form onSubmit={handleSubmit} action="">
+//     <h2>Write Review</h2>
+//     {/* <input className='text-field' type="text" name='review' value={review} onChange={handleChange} /> <br /> */}
+//     <textarea name="review" id="review" value={review} cols="40" rows="12" onChange={handleChange} ></textarea><br />
+//     <label htmlFor="rating">Bad 1-10 Excellent</label>
+//     <input type="number" id='rating' name='rating' value={rating} min='1' max='10' onChange={handleChange}/> <br />
+//     <div>
+//         <button type='submit'>Add Review</button>
+//     </div>
+// </form>
+// </div> */}
 
 export default EditReview

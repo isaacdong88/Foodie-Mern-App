@@ -20,9 +20,16 @@ function BusinessInterface() {
       data.map((review, key) => {
         return (
           <div key={key} className='rest-page-reviews'>
-            <div>{review.customerName}</div>
-            <div>{new Date(review.createdAt).toLocaleString()} Rating {review.rating}/10</div>
-            <div>{review.review}</div>
+            <div className='rpr-sec1'>Review by {review.customerName}</div>
+            <div className='rpr-sec2'>
+                <div>
+                    Rating {review.rating}/10
+                </div>
+                <div>
+                    {new Date(review.createdAt).toLocaleString()}
+                </div>
+            </div>
+            <div className='rpr-sec3'>{review.review}</div>
           </div>
         )
       })
@@ -50,12 +57,12 @@ useEffect(()=>{
   return (
     <div className='bus-interface-ctn'>
         <div className='bus-interface-profile'>
-            <h1>Profile Picture</h1>
+            <h2>Profile Picture</h2>
             <img src={business.image} alt="" />
         </div>
-        <div>
-            <div><h1>Customer Reviews</h1></div>
-            <div className='rest-page-reviewsDis'>
+        <div className='bus-interface-rewiew'>
+            <div><h2>Customer Reviews</h2></div>
+            <div className='bus-page-reviewsDis'>
                 {busReview}
             </div>
         </div>
