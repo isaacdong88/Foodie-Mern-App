@@ -10,6 +10,7 @@ import RestaurantPage from "./pages/RestaurantPage";
 import MyReviews from "./pages/MyReviews";
 import EditReviews from "./pages/EditReviews";
 import EditBusiness from "./pages/EditBusiness";
+import Profile from "./pages/Profile";
 
 function App() {
   return (
@@ -34,6 +35,7 @@ function App() {
           path="/interface/myreviews/:id"
           element={<EditReviews />}
         ></Route>
+        <Route path="/profile/:id" element={<Profile />}></Route>
       </Routes>
     </div>
   );

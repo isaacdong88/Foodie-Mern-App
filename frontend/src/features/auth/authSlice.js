@@ -66,6 +66,36 @@ export const logout = createAsyncThunk("auth/logout", async () => {
   return logout();
 });
 
+//delete user
+export const deleteUser = createAsyncThunk(
+  "auth/delete",
+  async (id, thunkAPI) => {
+    try {
+      const API_URL = "/user/";
+      const token = thunkAPI.getState().auth.user.token;
+      const deleteUser = async (id, token) => {
+        const config = {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        };
+        const response = await axios.delete(API_URL + id, config);
+
+        return response.data;
+      };
+      return await deleteUser(id, token);
+    } catch (error) {
+      const message =
+        (error.response &&
+          error.response.data &&
+          error.response.data.message) ||
+        error.message ||
+        error.toString();
+      return thunkAPI.rejectWithValue(message);
+    }
+  }
+);
+
 export const authSlice = createSlice({
   name: "auth",
   initialState,
@@ -109,6 +139,19 @@ export const authSlice = createSlice({
       })
       .addCase(logout.fulfilled, (state) => {
         state.user = null;
+      })
+      .addCase(deleteUser.pending, (state) => {
+        state.isLoading = true;
+      })
+      .addCase(deleteUser.fulfilled, (state, action) => {
+        state.isLoading = false;
+        state.isSuccess = true;
+        state.user = null;
+      })
+      .addCase(deleteUser.rejected, (state, action) => {
+        state.isLoading = false;
+        state.isError = true;
+        state.message = action.payload;
       });
   },
 });
